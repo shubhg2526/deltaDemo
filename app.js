@@ -114,7 +114,7 @@ app.use("/", userRouter);                            // ye line hai express rout
 
 
 app.get("/", (req, res) => {
-    res.send("Hello, I'm Root");
+    res.redirect("/listings");
 });
 
 
