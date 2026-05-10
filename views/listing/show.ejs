@@ -1,0 +1,125 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <div class="offset-2 mb-4">
+
+            <h1>
+                <%= listing.title %>
+            </h1>
+            <div class="card col-5 border-0">
+                <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image">
+                <div class="card-body">
+                    <p> Owned by <i>
+                            <%= listing.owner.username %>
+                        </i></p>
+                </div>
+            </div>
+
+
+            <ul>
+                <!-- <li>
+                <%= listing.title %>
+                </li> -->
+
+                <li>
+                    <%= listing.description %>
+                </li>
+                <!-- <li>
+                <%= listing.image?.url %>
+                </li> -->
+                <li>&#8377;<%= listing.price.toLocaleString("en-IN") %>
+                </li>
+                <li>
+                    <%= listing.location %>
+                </li>
+                <li>
+                    <%= listing.country %>
+                </li>
+            </ul>
+
+
+            <div>
+                <form action="/listings/<%= listing._id%>/edit" method="get">
+                    <button class="btn btn-danger">Edit</button>
+                </form>
+                <br>
+                <form action="/listings/<%= listing._id %>?_method=DELETE" method="post">
+                    <button class="btn btn-dark">Delete</button>
+                </form>
+            </div>
+
+            <hr>
+            <br>
+            <!-- yaha se phase 2 part 1 ka code hai...Review form -->
+            <% if(currUser){ %>
+                <form action="/listings/<%= listing._id%>/reviews" method="post" novalidate class="needs-validation">
+                    <h3 class="mb-3">Leave a Review!</h3>
+                    <!-- <div class="mb-3 col-4">
+                        <label for="rating">Rating : </label>
+                        <input type="range" max="5" min="1" id="rating" name="review[rating]" class="form-range">
+                    </div> -->
+                    <div class="mb-2 col-4">
+                        <label for="rating">Rating : </label>
+                        <fieldset class="starability-slot">
+                            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0" checked
+                                aria-label="No rating." />
+                            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                            <label for="first-rate1" title="Terrible">1 star</label>
+                            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                            <label for="first-rate2" title="Not good">2 stars</label>
+                            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                            <label for="first-rate3" title="Average">3 stars</label>
+                            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                            <label for="first-rate4" title="Very good">4 stars</label>
+                            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                            <label for="first-rate5" title="Amazing">5 stars</label>
+                        </fieldset>
+                    </div>
+                    <div class="col-8 mb-3">
+                        <label for="comment" class="form-label">Comment : </label><br>
+                        <textarea name="review[comment]" id="comment" cols="65" rows="6" class="form-control"
+                            required></textarea>
+                        <div class="invalid-feedback">Please write comment first.</div><br>
+                        <button class="btn btn-danger">Submit</button>
+                    </div>
+                </form>
+                <hr>
+                <% } %>
+
+                    <!-- yaha se customers k review show honge -->
+                    <h2 class="mb-4"><b>All Reviews</b></h2>
+                    <!-- <p><%= listing.reviews %></p>                         iss line se to bs objectId print hogi....toh humko populate method use krna pdega....show route pe jakr populate likhna pdega -->
+
+                    <div class="row">
+                        <% for(let review of listing.reviews){ %>
+                            <div class="card p-3 ms-3" style="width: 25rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= review.author.username %>
+                                    </h5>
+                                    <p class="starability-result" data-rating="<%= review.rating %>">
+                                        Rated: 3 stars
+                                    </p>
+                                    <p class="card-text">
+                                        <%= review.comment %>
+                                    </p>
+                                    <!-- <p class="card-text">
+                                        <%= review.rating %> stars
+                                    </p> -->
+
+                                    <form method="post"
+                                        action="/listings/<%=listing._id%>/reviews/<%= review._id%>?_method=DELETE">
+                                        <button class="btn-sm btn btn-dark">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <% } %>
+                    </div>
+
+                    <!-- <ul>
+                <% for(let review of listing.reviews){ %>
+                    <li><%= review.comment %> , Rating : <%= review.rating %> stars </li>
+                <% } %>
+            </ul> -->
+        </div>
+    </body>

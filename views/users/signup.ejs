@@ -1,0 +1,24 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-3">
+    <div class="col-6 offset-3">
+        <h1 class="mb-3">SignUp on Make<span style="background-color: red; border-radius: 5px;">My</span>Trip</h1>
+        <form action="/signup" method="post" novalidate class="needs-validation">
+
+            <label for="username" class="form-label">Username : </label><br>
+            <input type="text" id="username" placeholder="Enter Username" name="username" required class="form-control">
+            <div class="valid-feedback">Looks good</div>
+            <br>
+
+            <label for="email" class="form-label">Email : </label><br>
+            <input type="email" placeholder="Enter your email" required id="email" name="email" class="form-control">
+            <br>
+
+            <label for="password" class="form-label">Password : </label>
+            <input type="password" placeholder="Enter your password" name="password" id="password" required class="form-control">
+            <br>
+
+            <button class="btn btn-success">Signup</button>
+        </form>
+    </div>
+</div>

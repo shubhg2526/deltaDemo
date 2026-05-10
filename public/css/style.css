@@ -1,0 +1,99 @@
+/* body {
+    background-color: pink;
+} */
+
+
+/* navbar */
+.navbar {
+    height: 4rem;
+}
+
+.text-heading {
+    font-size: 25px;
+}
+
+.fa-road {
+    font-size: 30px;
+}
+
+.nav-link{
+    color: black !important
+}
+
+
+/* footer */
+.f-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(244, 244, 244);
+    border-top: 1px solid rgb(215, 215, 215);
+}
+
+.f-info-socials{
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.f-info-links {
+    margin-top: 10px;
+}
+
+.f-info-links a {
+    text-decoration: none;
+    color: black;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* card */
+.card-img-top {
+    border-radius: 10px;
+    height: 240px !important;
+    object-fit: cover !important;
+
+}
+
+.card {
+    margin-bottom: 40px !important;
+    margin-right: 40px !important;
+    /* cursor: pointer; */
+    height: auto;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card :hover{
+    opacity: 0.9;
+}
+
+.listing-links{
+    text-decoration: none;
+    color: black;
+}
+
+i{
+    cursor: pointer;
+}
+
+
+/* to put footer at the bottom */
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}

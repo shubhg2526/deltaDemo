@@ -1,0 +1,45 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <div class="row">
+            <div class="col-8 offset-2">
+                <h2>Edit your Listing</h2>
+                <br>
+                <form action="/listings/<%= listing._id %>?_method=PUT" method="post" novalidate class="needs-validation">
+                    <label for="title" class="form-label">Title : </label>
+                    <input type="text" value="<%= listing.title %>" name="listing[title]" class="form-control" required>
+                    <div class="valid-feedback">Title looks good</div>
+                    <br>
+
+                    <label for="description" class="form-label">Description : </label><br>
+                    <textarea name="listing[description]" cols="50" rows="10"
+                        class="form-control" required><%= listing.description%></textarea>
+                        <div class="invalid-feedback">please add description</div>
+                    <br>
+
+                    <label for="image" class="form-label">Image : </label>
+                    <input type="text" name="listing[image][url]" value="<%= listing.image.url %>" class="form-control" required>
+                    <br>
+
+                    <label for="price" class="form-label">Price : </label>
+                    <input type="number" name="listing[price]" value="<%= listing.price %>" class="form-control" required>
+                    <div class="invalid-feedback">Please add valid price</div>
+                    <br>
+
+                    <label for="location" class="form-label">Location : </label>
+                    <input type="text" name="listing[location]" value="<%= listing.location %>" class="form-control" required>
+                    <div class="invalid-feedback">Please add valid location</div>
+                    <br>
+
+                    <label for="country" class="form-label">Country : </label>
+                    <input type="text" name="listing[country]" value="<%= listing.country %>" class="form-control" required>
+                    <div class="invalid-feedback">Please add valid country name</div>
+                    <br>
+
+                    <button class="btn btn-danger">Submit</button>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+
+    </body>
