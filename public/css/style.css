@@ -5,7 +5,7 @@
 
 /* navbar */
 .navbar {
-    height: 4rem;
+    min-height: 4rem;
 }
 
 .text-heading {
@@ -104,5 +104,20 @@ body {
     .card {
         width: 100% !important;
         margin-right: 0 !important;
+    }
+
+    .navbar-collapse {
+        background-color: white;
+        padding: 1rem;
+        margin-top: 10px;
+    }
+
+    .d-flex {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-control {
+        width: 100% !important;
     }
 }
